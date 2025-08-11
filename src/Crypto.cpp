@@ -17,6 +17,7 @@ std::string Crypto::generateKey() {
     return base64Encode(std::vector<uint8_t>(key.begin(), key.end()));
 }
 
+
 std::vector<uint8_t> Crypto::xorCipher(const std::vector<uint8_t>& data, const std::string& key) {
     std::vector<uint8_t> result;
     result.reserve(data.size());

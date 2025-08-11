@@ -34,9 +34,15 @@ uninstall:
 
 clean:
 	rm -f $(DAEMON_OBJECTS) $(CLIENT_OBJECTS)
+	sudo rm -f /var/log/matt_daemon/*.log
+	sudo rm -f /var/log/matt_daemon/*.log.archived
+	sudo rm -f /var/lock/matt_daemon.lock
 
 fclean: clean
 	rm -f $(DAEMON_TARGET) $(CLIENT_TARGET)
+	rm -f /var/log/matt_daemon/*.log
+	rm -f /var/log/matt_daemon/*.log.archived
+	rm -f /var/lock/matt_daemon.lock
 
 re: fclean all
 

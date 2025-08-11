@@ -24,7 +24,6 @@ bool AuthManager::registerUser(const std::string& username, const std::string& p
     if (users.find(username) != users.end()) {
         return false; // User already exists
     }
-    
     users[username] = Crypto::hashPassword(password);
     saveUsers();
     return true;

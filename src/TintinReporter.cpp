@@ -86,9 +86,8 @@ void TintinReporter::rotateLogFile() {
         logFile.close();
     }
     
-    std::string archivedFile = LOG_DIR + "matt_daemon_" + std::to_string(logFileIndex++) + ".log.archived";
+    std::string archivedFile = LOG_DIR  + std::to_string(logFileIndex++) + ".log.archived";
     std::filesystem::rename(LOG_FILE, archivedFile);
-    
     logFile.open(LOG_FILE, std::ios::app);
 }
 

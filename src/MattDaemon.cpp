@@ -15,7 +15,7 @@
 
 
 // Use local paths instead of system paths
-const std::string MattDaemon::LOCK_FILE = "./matt_daemon.log";
+const std::string MattDaemon::LOCK_FILE = "/var/lock/matt_daemon.lock";
 MattDaemon *MattDaemon::instance = nullptr;
 std::atomic<bool> MattDaemon::running{true};
 
@@ -397,8 +397,8 @@ void MattDaemon::cleanupInactiveSessions() {
 void MattDaemon::processClientMessage(ClientSession* session, const std::string& message) {
     if (message.empty()) return;
 
-    // Try to decrypt message if client is authenticated
     std::string decryptedMessage = message;
+    std::cout << "Received message: " << decryptedMessage << std::endl;
     if (session->authenticated && !session->encryptionKey.empty()) {
         decryptedMessage = decryptMessage(message, session->encryptionKey);
     }
@@ -431,7 +431,7 @@ void MattDaemon::processClientMessage(ClientSession* session, const std::string&
                 send(session->socket, response.c_str(), response.length(), 0);
                 logger.log(TintinReporter::INFO, "Matt_daemon: New user registered: " + username);
             } else {
-                std::string response = "REGISTRATION_FAILED";
+                std::string response = "REGISTRATION_FAILED : ==> ";
                 if (!session->encryptionKey.empty()) {
                     response = encryptMessage(response, session->encryptionKey);
                 }
