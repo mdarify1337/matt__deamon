@@ -3,6 +3,9 @@
 #include <fstream>
 #include <string>
 #include <mutex>
+#include <vector>
+#include <chrono>
+
 class TintinReporter {
 public:
     enum LogLevel {

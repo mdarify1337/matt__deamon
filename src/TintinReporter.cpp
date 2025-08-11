@@ -1,4 +1,3 @@
-
 #include "TintinReporter.hpp"
 #include <iostream>
 #include <iomanip>
@@ -9,7 +8,7 @@
 #include <filesystem>
 #include <cstdlib>
 
-const std::string TintinReporter::LOG_DIR = "/var/log/matt_daemon/";  // <-- use /tmp or $HOME for dev
+const std::string TintinReporter::LOG_DIR = "/var/log/matt_daemon/";
 const std::string TintinReporter::LOG_FILE = LOG_DIR + "matt_daemon.log";
 
 TintinReporter::TintinReporter() : logRotationSize(10 * 1024 * 1024), logFileIndex(0) { // 10MB rotation
@@ -86,8 +85,9 @@ void TintinReporter::rotateLogFile() {
         logFile.close();
     }
     
-    std::string archivedFile = LOG_DIR  + std::to_string(logFileIndex++) + ".log.archived";
+    std::string archivedFile = LOG_DIR + "matt_daemon_" + std::to_string(logFileIndex++) + ".log.archived";
     std::filesystem::rename(LOG_FILE, archivedFile);
+    
     logFile.open(LOG_FILE, std::ios::app);
 }
 

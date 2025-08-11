@@ -525,12 +525,12 @@ void MattDaemon::run()
 
     std::cout << "Skipping root privilege check for testing..." << std::endl;
 
-    if (!createLockFile())
-    {
-        std::cerr << "Failed to create lock file, quitting" << std::endl;
-        logger.log(TintinReporter::ERROR, "Matt_daemon: Failed to create lock file, quitting");
-        return;
-    }
+    // if (!createLockFile())
+    // {
+    //     std::cerr << "Failed to create lock file, quitting" << std::endl;
+    //     logger.log(TintinReporter::ERROR, "Matt_daemon: Failed to create lock file, quitting");
+    //     return;
+    // }
 
     if (!createServer())
     {
