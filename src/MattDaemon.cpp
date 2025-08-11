@@ -461,10 +461,8 @@ void MattDaemon::handleConnections() {
                 maxFd = pair.first;
             }
         }
-
         timeout.tv_sec = 1;
         timeout.tv_usec = 0;
-
         int activity = select(maxFd + 1, &readFds, nullptr, nullptr, &timeout);
         
         if (activity < 0 && errno != EINTR) {

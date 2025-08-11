@@ -17,7 +17,6 @@
 #include <fstream>
 #include <iomanip>
 #include <ctime>
-#include <string>
 
 // Email Handler Class
 class EmailHandler {
