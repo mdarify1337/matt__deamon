@@ -8,7 +8,7 @@ CLIENT_OBJECTS = $(CLIENT_SOURCES:.cpp=.o)
 DAEMON_TARGET = Matt_daemon
 CLIENT_TARGET = Ben_AFK
 
-LDFLAGS = -lssl -lcrypto
+LDFLAGS = -lssl -lcrypto -lcurl
 
 all: $(DAEMON_TARGET) $(CLIENT_TARGET)
 
